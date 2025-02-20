@@ -1,0 +1,48 @@
+{
+    "Libros": {
+        "1123": {
+            "titulo": "sd",
+            "autor": "asd",
+            "genero": "df"
+        },
+        "2454": {
+            "titulo": "mi lucha",
+            "autor": "hitler",
+            "genero": "aotubiografia"
+        },
+        "4539": {
+            "titulo": "dsv",
+            "autor": "ds",
+            "genero": "si"
+        }
+    },
+    "Musica": {
+        "1233": {
+            "titulo": "adada",
+            "artista": "daad",
+            "genero": "adadadadadadadad"
+        },
+        "7451": {
+            "titulo": "asd",
+            "artista": "xc",
+            "genero": "a"
+        },
+        "9181": {
+            "titulo": "",
+            "artista": "a",
+            "genero": "d"
+        }
+    },
+    "Peliculas": {
+        "3121": {
+            "titulo": "sdf",
+            "director": "adada",
+            "genero": "ad"
+        },
+        "5732": {
+            "titulo": "no se",
+            "director": "ajajajaj",
+            "genero": "no"
+        }
+    }
+}
