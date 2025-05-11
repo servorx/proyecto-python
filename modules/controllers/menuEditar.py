@@ -1,7 +1,8 @@
-import modules.utils.screenControllers as sc
 from modules.menu import MENU_EDITAR
 import json
 from modules.utils.corefiles import read_json, write_json
+from modules.utils.screenControllers import *
+
 
 DB_FILE = "data/colecciones.json"
 
@@ -38,7 +39,7 @@ def editarGenero(archivo, genero, nuevos_datos):
 
 
 def menu_editar():
-    sc.borrar_pantalla
+    clean_screen
     print(MENU_EDITAR) 
     try:
         opcion = int(input(':_'))
@@ -53,4 +54,4 @@ def menu_editar():
             case 3:
                 editarGenero(DB_FILE)
             case 4:
-                sc.pausar_pantalla()
+                clean_screen

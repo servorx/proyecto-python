@@ -1,19 +1,19 @@
 from main import menu
 import modules.utils.id as id
-import modules.utils.screenControllers as sc
-from modules.menu import MENU_AGREGAR
+from modules.utils.screenControllers import *
+from modules.menu import MENU_ADD
 import modules.utils.corefiles as cf
 
 #ingresa calificacion
 
 DB_FILE = "data/colecciones.json"
-def menu_agregar():
-    sc.borrar_pantalla
+def add():
+    clean_screen
     print(MENU_AGREGAR)
     try:
         opcion = int(input(':_'))
     except ValueError:
-        return menu_agregar()
+        return add()
     else:
         match opcion:
             case 1:
@@ -65,6 +65,6 @@ def menu_agregar():
                 return menu()
             case _:
                 print('Error al digitar las opciones')
-                sc.pausar_pantalla
+                pause_screen
 
 

@@ -1,5 +1,5 @@
 import json
-import modules.utils.screenControllers as sc
+from modules.utils.screenControllers import * 
 from tabulate import tabulate
 from modules.menu import MENU_VER_CATEGORIA
 

@@ -1,4 +1,4 @@
-import modules.utils.screenControllers as sc
+from modules.utils.screenControllers import *
 from modules.menu import MENU_VER 
 import json
 from tabulate import tabulate
@@ -6,11 +6,11 @@ from tabulate import tabulate
 #meter las funciones dentro de una carpeta dentro de este modulo y a su vez, meter un modulo de los casos
 
 def listarMusica(archivo):
-    sc.borrar_pantalla()
+    clean_screen
     ruta = f"./data/{archivo}.json"
     with open(ruta, "r", encoding="utf-8") as archivoLeer:
         datos = json.load(archivoLeer) 
-    sc.borrar_pantalla()
+    clean_screen
     print(f"Elementos en {'musica'.capitalize()}:")
     lista_datos = datos.get("musica".capitalize(), {})
     if not lista_datos:

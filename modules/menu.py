@@ -1,4 +1,4 @@
-MENU_PRINCIPAL = """
+MENU_MAIN = """
 ===========================================
         Administrador de Colección
 ===========================================
@@ -13,7 +13,7 @@ MENU_PRINCIPAL = """
 Selecciona una opción (1-8):
 """
 
-MENU_AGREGAR = """
+MENU_ADD = """
 ===========================================
         Añadir un Nuevo Elemento
 ===========================================
@@ -26,7 +26,7 @@ MENU_AGREGAR = """
 Selecciona una opción (1-4):
 """
 
-MENU_VER ="""
+MENU_SEE ="""
 ===========================================
         Ver Todos los Elementos
 ===========================================
@@ -39,7 +39,7 @@ MENU_VER ="""
 Selecciona una opción (1-4):
 """
 
-MENU_BUSCAR = """
+MENU_SEARCH = """
 ===========================================
         Buscar un Elemento
 ===========================================
@@ -52,7 +52,7 @@ MENU_BUSCAR = """
 Selecciona una opción (1-4):
 """
 
-MENU_EDITAR = """
+MENU_CHANGE = """
 ===========================================
         Editar un Elemento
 ===========================================
@@ -66,7 +66,7 @@ MENU_EDITAR = """
 Selecciona una opción (1-5):
 """
 
-MENU_ELIMINAR = """
+MENU_DELETE = """
 ===========================================
         Eliminar un Elemento
 ===========================================
@@ -78,7 +78,7 @@ MENU_ELIMINAR = """
 Selecciona una opción (1-3):
 """
 
-MENU_VER_CATEGORIA = """
+MENU_SEARCH_CATEGORY = """
 ===========================================
         Ver Elementos por Categoría
 ===========================================

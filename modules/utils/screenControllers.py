@@ -1,13 +1,13 @@
 from os import system
 import sys
 
-def borrar_pantalla():
+def clean_screen():
   if sys.platform == "linux" or sys.platform == "darwin":
     system("clear")
   else:
     system("cls")
 
-def pausar_pantalla():
+def pause_screen():
   if sys.platform == "linux" or sys.platform == "darwin":
     x=input("Presione un tecla para continuar")
     return x

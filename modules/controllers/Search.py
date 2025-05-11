@@ -1,7 +1,7 @@
-from modules.menu import MENU_BUSCAR
+from modules.menu import MENU_SEARCH
 from modules.utils.corefiles import read_json 
 from modules.utils.corefiles import write_json
-import modules.utils.screenControllers as sc
+from modules.utils.screenControllers import *
 
 
 DB_FILE = "data/colecciones.json"
@@ -37,13 +37,13 @@ def editarGenero(archivo, genero, nuevos_datos):
     return f"No se encontraron elementos en el género '{genero}'."
 
 
-def menu_buscar():
-    sc.borrar_pantalla()
-    print(MENU_BUSCAR) 
+def search():
+    clean_screen
+    print(MENU_SEARCH) 
     try:
         opcion = int(input(':_'))
     except ValueError:
-        return menu_buscar()
+        return MENU_SEARCH()
     else:
         match opcion: 
             case 1:
@@ -53,4 +53,4 @@ def menu_buscar():
             case 3:
                 editarGenero("coleccion", "genero", nuevos_datos=input())
             case 4:
-                sc.pausar_pantalla()
+                pause_screen

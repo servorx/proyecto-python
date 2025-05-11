@@ -1,4 +1,4 @@
-import modules.utils.screenControllers as sc
+from modules.utils.screenControllers import *
 from modules.menu import MENU_ELIMINAR
 from modules.utils.corefiles import delete_json, read_json
 
@@ -27,7 +27,7 @@ def eliminarIdentificador():
 
 
 def menu_eliminar():
-    sc.borrar_pantalla
+    clean_screen
     print(MENU_ELIMINAR) 
     try:
         opcion = int(input(':_'))
@@ -40,4 +40,4 @@ def menu_eliminar():
             case 2:
                 eliminarIdentificador()
             case 3:
-                sc.pausar_pantalla()
+                pause_screen
