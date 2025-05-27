@@ -1,47 +1,41 @@
 from modules.menu import *
 from .utils.screenControllers import *
-from modules.controllers.Add import *
-from modules.controllers.menuVer import *
-from modules.controllers.Search import *
-from modules.controllers.menuEditar import *
-from modules.controllers.menuEliminar import *
-from modules.controllers.menuVerCategoria import*
+from .controllers.add_ import *
+from .controllers.see_ import *
+from .controllers.search_ import *
+from .controllers.edit_ import *
+from .controllers.delete_ import *
+from .controllers.see_category_ import *
 
 def menu():
-    clean_screen
+    clean_screen()
     try:
-        print(MENU_PRINCIPAL)
-        opcion = int(input(':_'))
+        print(MENU_MAIN)
+        opcion = int(input('->'))
     except ValueError:
         print('Solo son validos numeros')
-        pause_screen
+        pause_screen()
         return menu()
     else:
         match opcion:
             case 1:
-                menu_agregar
-                return menu()
+                add()
             case 2:
-                menu_ver
-                return menu()
+                see()
             case 3:
-                menu_buscar
-                return menu()
+                search()
             case 4:                
-                menu_editar
-                return menu()
+                edit()
             case 5:
-                menu_eliminar
-                return menu()
+                delete()
             case 6:
-                menu_ver_categoria
-                return menu()
+                see_category()
             case 7:
-                clean_screen
+                clean_screen()
                 print('gracias por usar nuestro programa :)')
-                pause_screen
+                pause_screen()
             case _:
-                clean_screen
+                clean_screen()
                 print('ingreso mal los datos...')
-                pause_screen
+                pause_screen()
                 return menu()

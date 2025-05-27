@@ -10,8 +10,7 @@ MENU_MAIN = """
 6. Ver Elementos por Categoría
 7. Salir
 ===========================================
-Selecciona una opción (1-8):
-"""
+Selecciona una opción (1-8):"""
 
 MENU_ADD = """
 ===========================================
@@ -52,7 +51,7 @@ MENU_SEARCH = """
 Selecciona una opción (1-4):
 """
 
-MENU_CHANGE = """
+MENU_EDIT = """
 ===========================================
         Editar un Elemento
 ===========================================
@@ -78,7 +77,7 @@ MENU_DELETE = """
 Selecciona una opción (1-3):
 """
 
-MENU_SEARCH_CATEGORY = """
+MENU_SEE_CATEGORY = """
 ===========================================
         Ver Elementos por Categoría
 ===========================================

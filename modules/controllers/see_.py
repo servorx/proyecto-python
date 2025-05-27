@@ -1,5 +1,5 @@
 from modules.utils.screenControllers import *
-from modules.menu import MENU_VER 
+from modules.menu import MENU_SEE
 import json
 from tabulate import tabulate
 
@@ -23,11 +23,11 @@ def listarMusica(archivo):
 
 
 def listarPeliculas(archivo):
-    sc.borrar_pantalla()
+    clean_screen
     ruta = f"./data/{archivo}.json"
     with open(ruta, "r", encoding="utf-8") as archivoLeer:
         datos = json.load(archivoLeer) 
-    sc.borrar_pantalla()
+    clean_screen
     print(f"Elementos en {'peliculas'.capitalize()}:")
     lista_datos = datos.get("peliculas".capitalize(), {})
     if not lista_datos:
@@ -40,11 +40,11 @@ def listarPeliculas(archivo):
 
 
 def listarLibros(archivo):
-    sc.borrar_pantalla()
+    clean_screen
     ruta = f"./data/{archivo}.json"
     with open(ruta, "r", encoding="utf-8") as archivoLeer:
         datos = json.load(archivoLeer) 
-    sc.borrar_pantalla()
+    clean_screen
     print(f"Elementos en {'libros'.capitalize()}:")
     lista_datos = datos.get("libros".capitalize(), {})
     if not lista_datos:
@@ -57,13 +57,13 @@ def listarLibros(archivo):
 
 
 
-def menu_ver():
-    sc.borrar_pantalla
-    print(MENU_VER) 
+def see():
+    clean_screen
+    print(MENU_SEE) 
     try:
         opcion = int(input(':_'))
     except ValueError:
-        return menu_ver()
+        return see()
     else:
         match opcion: 
             case 1:
@@ -73,4 +73,4 @@ def menu_ver():
             case 3:
                 listarMusica("colecciones")
             case 4:
-                sc.pausar_pantalla()
+                pause_screen

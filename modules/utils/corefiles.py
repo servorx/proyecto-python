@@ -50,5 +50,4 @@ def initialize_json(file_path: str, initial_structure: Dict) -> None:
                 current_data[key] = value
         write_json(file_path, current_data)
 
-
 #arreglar cada funcion para quitar la innecesarias

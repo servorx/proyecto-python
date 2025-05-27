@@ -1,5 +1,5 @@
+from modules.menu import MENU_DELETE
 from modules.utils.screenControllers import *
-from modules.menu import MENU_ELIMINAR
 from modules.utils.corefiles import delete_json, read_json
 
 DB_FILE = "./data/colecciones.json"
@@ -26,13 +26,13 @@ def eliminarIdentificador():
     print(f"No se encontró el ID '{identificador}'.")
 
 
-def menu_eliminar():
+def delete():
     clean_screen
-    print(MENU_ELIMINAR) 
+    print(MENU_DELETE) 
     try:
-        opcion = int(input(':_'))
+        opcion = int(input('->'))
     except ValueError:
-        return menu_eliminar()
+        return delete()
     else:
         match opcion: 
             case 1:

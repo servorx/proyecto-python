@@ -1,26 +1,25 @@
-from main import menu
-import modules.utils.id as id
-from modules.utils.screenControllers import *
 from modules.menu import MENU_ADD
-import modules.utils.corefiles as cf
+from modules.utils.id import *
+from modules.utils.screenControllers import *
+from modules.utils.corefiles import *
 
 #ingresa calificacion
-
-DB_FILE = "data/colecciones.json"
+DB_FILE = "./data/colecciones.json"
 def add():
-    clean_screen
-    print(MENU_AGREGAR)
+    clean_screen()
+    print(MENU_ADD)
     try:
-        opcion = int(input(':_'))
+        opcion = int(input('->'))
     except ValueError:
+        pause_screen()
         return add()
     else:
         match opcion:
             case 1:
-                titulo = input('Ingrese El Titulo:_')
-                autor = input('Ingrese El Autor:_')
-                genero = input('Ingrese El Genero:_')
-                id_libro= str(id.idLibro()) 
+                titulo = input('Ingrese El Titulo\n->')
+                autor = input('Ingrese El Autor\n->')
+                genero = input('Ingrese El Genero\n->')
+                id_libro= str(idLibro()) 
                 nuevo_libro = {
                 str(id_libro):
                     {
@@ -29,13 +28,13 @@ def add():
                     "genero": genero,
                     }
                 }
-                cf.update_json(DB_FILE, nuevo_libro, ["libros".capitalize()])
-                return menu_agregar
+                update_json(DB_FILE, nuevo_libro, ["libros".capitalize()])
+                return MENU_ADD
             case 2:
                 titulo = input('Ingrese El Titulo:_')
                 director = input('Ingrese Del Director:_')
                 genero = input('Ingrese El Genero:_')
-                id_pelicula = str(id.idPelicula()) 
+                id_pelicula = str(idPelicula()) 
                 nueva_pelicula = {
                 str(id_pelicula):
                     {
@@ -44,13 +43,13 @@ def add():
                     "genero": genero,
                     }
                 }
-                cf.update_json(DB_FILE, nueva_pelicula, ["peliculas".capitalize()])
-                return menu_agregar
+                update_json(DB_FILE, nueva_pelicula, ["peliculas".capitalize()])
+                return MENU_ADD
             case 3:
                 titulo = input('Ingrese El Titulo:_')
                 artista = input('Ingrese El Artista:_')
                 genero = input('Ingrese El Genero:_')
-                id_musica = str(id.idMusica()) 
+                id_musica = str(idMusica()) 
                 nueva_cancion = {
                 str(id_musica): 
                     {
@@ -59,10 +58,11 @@ def add():
                     "genero": genero,
                     }
                 }
-                cf.update_json(DB_FILE, nueva_cancion, ["musica".capitalize()])
-                return menu_agregar
+                update_json(DB_FILE, nueva_cancion, ["musica".capitalize()])
+                return MENU_ADD
             case 4:
-                return menu()
+                # aca hjabia un return menu
+                return 
             case _:
                 print('Error al digitar las opciones')
                 pause_screen

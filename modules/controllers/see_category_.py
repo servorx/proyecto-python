@@ -1,7 +1,7 @@
 import json
 from modules.utils.screenControllers import * 
 from tabulate import tabulate
-from modules.menu import MENU_VER_CATEGORIA
+from modules.menu import MENU_SEE_CATEGORY
 
 #en la logica se comprendio el ver categoria como que el usuario ingrese una clasificacion cualquiera ya sea genero, titulo o lo que sea, con el fin de 
 #que el usuario tenga la libertad de buscar lo que desee
@@ -39,13 +39,13 @@ def listarLibrosCat(archivo, busqueda):
     print(f"busqueda realizada'{busqueda}':")
     print(tabulate(variable, headers="keys", tablefmt="grid"))
 
-def menu_ver_categoria():
-    sc.borrar_pantalla
-    print(MENU_VER_CATEGORIA) 
+def see_category():
+    clean_screen
+    print(MENU_SEE_CATEGORY) 
     try:
         opcion = int(input(':_'))
     except ValueError:
-        return menu_ver_categoria()
+        return see_category()
     else:
         match opcion: 
             case 1:
@@ -55,5 +55,5 @@ def menu_ver_categoria():
             case 3:
                 listarMusicaCat("colecciones", busqueda=input('usuario, ingrese el genero musicial que desea buscar\n_:'))
             case 4:
-                sc.pausar_pantalla()
+                pause_screen
 

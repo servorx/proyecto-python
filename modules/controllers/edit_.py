@@ -1,4 +1,4 @@
-from modules.menu import MENU_EDITAR
+from modules.menu import MENU_EDIT
 import json
 from modules.utils.corefiles import read_json, write_json
 from modules.utils.screenControllers import *
@@ -38,13 +38,13 @@ def editarGenero(archivo, genero, nuevos_datos):
     return f"No se encontraron elementos en el género '{genero}'."
 
 
-def menu_editar():
+def edit():
     clean_screen
-    print(MENU_EDITAR) 
+    print(MENU_EDIT) 
     try:
         opcion = int(input(':_'))
     except ValueError:
-        return menu_editar()
+        return edit()
     else:
         match opcion: 
             case 1:
