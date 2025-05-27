@@ -2,13 +2,13 @@ MENU_MAIN = """
 ===========================================
              Collection Manager
 ===========================================
-1. Add new element
-2. List all elements
-3. Search element
-4. Edit element
-5. Eliminar Elemento
-6. Ver Elementos por Categoría
-7. Salir
+1. Add Items
+2. Show All Items
+3. Search Items
+4. Edit Item
+5. Delete Item
+6. View Items by Category
+7. Exit
 ===========================================
 Choose one option (1-7):"""
 
@@ -22,8 +22,7 @@ What type of item would you like to add?
 3. Music
 4. Return to Main Menu
 ===========================================
-Select an option (1-4):
-"""
+Select an option (1-4):"""
 
 MENU_SEE = """
 ===========================================
@@ -35,8 +34,7 @@ Which category would you like to view?
 3. View All Music
 4. Return to Main Menu
 ===========================================
-Select an option (1-4):
-"""
+Select an option (1-4):"""
 
 MENU_SEARCH = """
 ===========================================
@@ -48,8 +46,7 @@ How would you like to search?
 3. Search by Genre
 4. Return to Main Menu
 ===========================================
-Select an option (1-4):
-"""
+Select an option (1-4):"""
 
 MENU_EDIT = """
 ===========================================
@@ -62,8 +59,7 @@ What type of change would you like to make?
 4. Edit Rating
 5. Return to Main Menu
 ===========================================
-Select an option (1-5):
-"""
+Select an option (1-5):"""
 
 MENU_DELETE = """
 ===========================================
@@ -74,8 +70,7 @@ How would you like to delete?
 2. Delete by Unique Identifier
 3. Return to Main Menu
 ===========================================
-Select an option (1-3):
-"""
+Select an option (1-3):"""
 
 MENU_SEE_CATEGORY = """
 ===========================================
@@ -87,7 +82,6 @@ Which category would you like to view?
 3. View Music
 4. Return to Main Menu
 ===========================================
-Select an option (1-4):
-"""
+Select an option (1-4):"""
 
 
