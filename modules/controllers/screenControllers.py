@@ -9,7 +9,7 @@ def clean_screen():
 
 def pause_screen():
   if sys.platform == "linux" or sys.platform == "darwin":
-    x=input("Presione un tecla para continuar")
+    x=input("press a keybind to continue")
     return x
   else:
     system("pause")

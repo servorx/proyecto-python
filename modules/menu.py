@@ -1,92 +1,93 @@
 MENU_MAIN = """
 ===========================================
-        Administrador de Colección
+             Collection Manager
 ===========================================
-1. Añadir un Nuevo Elemento
-2. Ver Todos los Elementos
-3. Buscar un Elemento
-4. Editar un Elemento
-5. Eliminar un Elemento
+1. Add new element
+2. List all elements
+3. Search element
+4. Edit element
+5. Eliminar Elemento
 6. Ver Elementos por Categoría
 7. Salir
 ===========================================
-Selecciona una opción (1-8):"""
+Choose one option (1-7):"""
 
 MENU_ADD = """
 ===========================================
-        Añadir un Nuevo Elemento
+            Add a New Item
 ===========================================
-¿Qué tipo de elemento deseas añadir?
-1. Libro
-2. Película
-3. Música
-4. Regresar al Menú Principal
+What type of item would you like to add?
+1. Book
+2. Movie
+3. Music
+4. Return to Main Menu
 ===========================================
-Selecciona una opción (1-4):
+Select an option (1-4):
 """
 
-MENU_SEE ="""
+MENU_SEE = """
 ===========================================
-        Ver Todos los Elementos
+            View All Items
 ===========================================
-¿Qué categoría deseas ver?
-1. Ver Todos los Libros
-2. Ver Todas las Películas
-3. Ver Toda la Música
-4. Regresar al Menú Principal
+Which category would you like to view?
+1. View All Books
+2. View All Movies
+3. View All Music
+4. Return to Main Menu
 ===========================================
-Selecciona una opción (1-4):
+Select an option (1-4):
 """
 
 MENU_SEARCH = """
 ===========================================
-        Buscar un Elemento
+            Search for an Item
 ===========================================
-¿Cómo deseas buscar?
-1. Buscar por Título
-2. Buscar por Autor/Director/Artista
-3. Buscar por Género
-4. Regresar al Menú Principal
+How would you like to search?
+1. Search by Title
+2. Search by Author/Director/Artist
+3. Search by Genre
+4. Return to Main Menu
 ===========================================
-Selecciona una opción (1-4):
+Select an option (1-4):
 """
 
 MENU_EDIT = """
 ===========================================
-        Editar un Elemento
+            Edit an Item
 ===========================================
-¿Qué tipo de cambio deseas realizar?
-1. Editar Título
-2. Editar Autor/Director/Artista
-3. Editar Género
-4. Editar Valoración
-5. Regresar al Menú Principal
+What type of change would you like to make?
+1. Edit Title
+2. Edit Author/Director/Artist
+3. Edit Genre
+4. Edit Rating
+5. Return to Main Menu
 ===========================================
-Selecciona una opción (1-5):
+Select an option (1-5):
 """
 
 MENU_DELETE = """
 ===========================================
-        Eliminar un Elemento
+            Delete an Item
 ===========================================
-¿Cómo deseas eliminar?
-1. Eliminar por Título
-2. Eliminar por Identificador Único
-3. Regresar al Menú Principal
+How would you like to delete?
+1. Delete by Title
+2. Delete by Unique Identifier
+3. Return to Main Menu
 ===========================================
-Selecciona una opción (1-3):
+Select an option (1-3):
 """
 
 MENU_SEE_CATEGORY = """
 ===========================================
-        Ver Elementos por Categoría
+            View Items by Category
 ===========================================
-¿Qué categoría deseas ver?
-1. Ver Libros
-2. Ver Películas
-3. Ver Música
-4. Regresar al Menú Principal
+Which category would you like to view?
+1. View Books
+2. View Movies
+3. View Music
+4. Return to Main Menu
 ===========================================
-Selecciona una opción (1-4):
+Select an option (1-4):
 """
+
 
