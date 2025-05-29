@@ -1,6 +1,6 @@
 MENU_MAIN = """
 ===========================================
-             Collection Manager
+            Collection Manager
 ===========================================
 1. Add Items
 2. Show All Items
