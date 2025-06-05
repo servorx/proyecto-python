@@ -1,22 +1,11 @@
 {
     "books": [
         {
-            "author": "asx",
-            "title": "asd",
-            "genre": "qwe",
-            "validation": null
-        },
-        {
-            "author": "ascasd",
-            "title": "sdc",
-            "genre": "sd",
-            "validation": null
-        },
-        {
-            "author": "dscv ;sdfnbl",
-            "title": "d",
-            "genre": "2",
-            "validation": 3.0
+            "author": "sc",
+            "title": "awe",
+            "genre": "12",
+            "validation": 3.0,
+            "id": 6169
         }
     ],
     "movies": [],

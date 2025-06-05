@@ -35,30 +35,6 @@ How would you like to delete?
 ===========================================
 Select an option (1-3):"""
 
-MENU_SEE = """
-===========================================
-            View All Items
-===========================================
-Which category would you like to view?
-1. View All Books
-2. View All Movies
-3. View All Music
-4. Return to Main Menu
-===========================================
-Select an option (1-4):"""
-
-MENU_SEARCH = """
-===========================================
-            Search for an Item
-===========================================
-How would you like to search?
-1. Search by Title
-2. Search by Author/Director/Artist
-3. Search by Genre
-4. Return to Main Menu
-===========================================
-Select an option (1-4):"""
-
 MENU_EDIT = """
 ===========================================
             Edit an Item
@@ -72,6 +48,17 @@ What type of change would you like to make?
 ===========================================
 Select an option (1-5):"""
 
+MENU_SEARCH = """
+===========================================
+            Search for an Item
+===========================================
+How would you like to search?
+1. Search by Title
+2. Search by Author/Director/Artist
+3. Search by Genre
+4. Return to Main Menu
+===========================================
+Select an option (1-4):"""
 
 MENU_SEE_CATEGORY = """
 ===========================================
@@ -81,6 +68,19 @@ Which category would you like to view?
 1. View Books
 2. View Movies
 3. View Music
+4. Return to Main Menu
+===========================================
+Select an option (1-4):"""
+
+
+MENU_SEE = """
+===========================================
+            View All Items
+===========================================
+Which category would you like to view?
+1. View All Books
+2. View All Movies
+3. View All Music
 4. Return to Main Menu
 ===========================================
 Select an option (1-4):"""

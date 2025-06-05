@@ -2,6 +2,8 @@ from typing import Optional, Tuple
 from modules.menu import MENU_DELETE
 from modules.controllers.corefiles import *
 
+
+
 # esta funcion sirve para validar las entradas del usuario al mostrar el menu con el fin de recortar el codigo y separarlo en funciones.
 def validate_value():
   clean_screen()
@@ -64,10 +66,10 @@ def delete():
   try:
       confirm = str(input(f"\nthis is the data you wrote: {entry}\nDo you want to keep the changes? (y/n): ")).lower()
       if confirm == "y":
-        data = read_json(DB_file)
+        data = read_json(DB_FILE)
         # obtiene el endpoint de acuerdo al caso y le agrega los valores correspondientes establecidos en el entry
         data[category_name].append(entry)
-        write_json(DB_file, data)
+        write_json(DB_FILE, data)
         print("Data saved successfully!")
       elif confirm == "n":
         print("Changes discarded.")

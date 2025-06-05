@@ -4,7 +4,7 @@ from modules.controllers.screenControllers import *
 from modules.menu import MENU_ADD
 from typing import Optional, Tuple
 
-DB_file = "./data/db.json"
+DB_FILE = "./data/db.json"
 
 def validate_value():
   clean_screen()
@@ -45,8 +45,10 @@ def add():
     return add()
 
   # en caso de que el archivo no exista se crea con el initialize_json
-  if read_json(DB_file) is None:
-    initialize_json(DB_file, initial_structure={
+  if read_json(DB_FILE) == {}:
+    print("creating JSON...")
+    pause_screen()
+    initialize_json(DB_FILE, initial_structure={
       "books": [],
       "movies": [],
       "music": []
@@ -58,23 +60,31 @@ def add():
       category_name = "books"
       author = input("write the author of the book\n-> ")
       title, genre, validation = input_values(category)
+      # funcion para crear y verficiar el ID
+      id = ID()
+
       # datos a actualizar 
       entry = {
-          "author": author,
-          "title": title,
-          "genre": genre,
-          "validation": validation
+        "author": author,
+        "title": title,
+        "genre": genre,
+        "validation": validation,
+        "id": id
       }
     case 2:
       category = "movie"
       category_name = "movies"
       director = input("write the director of the movie\n-> ")
       title, genre, validation = input_values(category)
+      # funcion para crear y verficiar el ID
+      id = ID()
+
       entry = {
-          "director": director,
-          "title": title,
-          "genre": genre,
-          "validation": validation
+        "director": director,
+        "title": title,
+        "genre": genre,
+        "validation": validation,
+        "id": id
       }
 
     case 3:
@@ -82,11 +92,15 @@ def add():
       category_name = "music"
       artist = input("write the artist of the song\n-> ")
       title, genre, validation = input_values(category)
+      # funcion para crear y verficiar el ID
+      id = ID()
+
       entry = {
-          "artist": artist,
-          "title": title,
-          "genre": genre,
-          "validation": validation
+        "artist": artist,
+        "title": title,
+        "genre": genre,
+        "validation": validation,
+        "id": id
       }
     
     case 4:
@@ -100,20 +114,20 @@ def add():
 
   # validacion para poder agregar los datos
   try:
-      confirm = str(input(f"\nthis is the data you wrote: {entry}\nDo you want to keep the changes? (y/n): ")).lower()
-      if confirm == "y":
-        data = read_json(DB_file)
-        # obtiene el endpoint de acuerdo al caso y le agrega los valores correspondientes establecidos en el entry
-        data[category_name].append(entry)
-        write_json(DB_file, data)
-        print("Data saved successfully!")
-      elif confirm == "n":
-        print("Changes discarded.")
-      else:
-        print("This is not a valid value, please enter again.")
+    confirm = str(input(f"\nthis is the data you wrote: {entry}\nDo you want to keep the changes? (y/n): ")).lower()
+    if confirm == "y":
+      data = read_json(DB_FILE)
+      # obtiene el endpoint de acuerdo al caso y le agrega los valores correspondientes establecidos en el entry
+      data[category_name].append(entry)
+      write_json(DB_FILE, data)
+      print("Data saved successfully!")
+    elif confirm == "n":
+      print("Changes discarded.")
+    else:
+      print("This is not a valid value, please enter again.")
   except Exception as e:
-      print(f"error type: {e}, wrote de data corretly")
+    print(f"error type: {e}, wrote de data corretly")
   finally:
-      # para que al finalizar el programa vuelva al menu principal
-      pause_screen()
-      return
+    # para que al finalizar el programa vuelva al menu principal
+    pause_screen()
+    return
