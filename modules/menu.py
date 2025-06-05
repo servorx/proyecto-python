@@ -24,6 +24,17 @@ What type of item would you like to add?
 ===========================================
 Select an option (1-4):"""
 
+MENU_DELETE = """
+===========================================
+            Delete an Item
+===========================================
+How would you like to delete?
+1. Delete by Title
+2. Delete by Unique Identifier
+3. Return to Main Menu
+===========================================
+Select an option (1-3):"""
+
 MENU_SEE = """
 ===========================================
             View All Items
@@ -61,16 +72,6 @@ What type of change would you like to make?
 ===========================================
 Select an option (1-5):"""
 
-MENU_DELETE = """
-===========================================
-            Delete an Item
-===========================================
-How would you like to delete?
-1. Delete by Title
-2. Delete by Unique Identifier
-3. Return to Main Menu
-===========================================
-Select an option (1-3):"""
 
 MENU_SEE_CATEGORY = """
 ===========================================

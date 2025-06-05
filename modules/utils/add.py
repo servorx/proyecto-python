@@ -1,33 +1,8 @@
-# Separar la lógica de recolección de datos y escritura en JSON:
-# Eso mejora el orden, facilita pruebas, y permite modificar o expandir sin romper todo.
-
-# Validar que la nota de validación esté entre 0 y 5 o similar (si aplica):
-# El valor validation se toma directamente, pero no hay verificación de que tenga sentido.
-
-# Agregar control de errores para los accesos a archivo:
-# A veces write_json puede fallar por permisos o rutas inválidas.
-
-# Aprovechar más los typing en funciones:
-# Ya los importaste (Dict, List, etc.) pero no los estás usando en add, por ejemplo.
-
-# Guardar correctamente los datos en su categoría dentro del JSON:
-# Actualmente no estás añadiendo la entrada a la lista existente de books, movies, etc. Solo estás tratando de escribir un objeto sin conservar los anteriores.
-
-# Mostrar mensaje de confirmación al guardar:
-# El usuario no sabe si se guardó bien o no.
-
-# Funcionalidad para ver lo que ya se ha guardado:
-# Solo puedes agregar, no consultar lo guardado.
-
-# Manejo de campo "opcional":
-# Aunque pides validación como “opcional”, lo obligas a escribir algo. Deberías permitir dejarlo vacío.
-
-# Modularidad:
-# Algunas funciones hacen demasiadas cosas a la vez (como add). Podrías dividirlas para que cada una tenga una sola responsabilidad.
-
-
 from modules.controllers.corefiles import *
+from modules.controllers.id import *
+from modules.controllers.screenControllers import *
 from modules.menu import MENU_ADD
+from typing import Optional, Tuple
 
 DB_file = "./data/db.json"
 
@@ -44,27 +19,23 @@ def validate_value():
     return None
   return value
 
-def input_values():
-  value = validate_value()
-  if value == 1:
-    category = "book"
-    category_name = "books"
-  elif value == 2:
-    category = "movie"
-    category_name = "movies"
-  elif value == 3:
-    category = "song"
-    category_name = "music"
+def input_values(category: str) -> Tuple[str, str, Optional[float]]:
   try:
-    title = str(input(f"write the title of the {category}\n-> "))
-    genre = str(input(f"write the genre of the {category}\\n-> "))
-    # esto es lo que se debe de hacer para el input de la validacion sea opcional, primero se pide el input, si el usuario da enter se devuelve None
+    title = input(f"write the title of the {category}\n-> ")
+    genre = input(f"write the genre of the {category}\n-> ")
     validation_input = input(f"write the validation of the {category} (optional)\n-> ")
+    # esto es lo que se debe de hacer para el input de la validacion sea opcional, primero se pide el input, si el usuario da enter se devuelve None
     validation = float(validation_input) if validation_input else None
+    if validation is not None and not (0 <= validation <= 5):
+      print("Validation must be between 0 and 5.")
+      pause_screen()
+      return input_values(category)
+
+    return title, genre, validation
   except ValueError:
-    print("incorrect value, try again")
+    print("Incorrect value, try again.")
     pause_screen()
-  return category, category_name, title, genre, validation
+    return input_values(category)
 
 def add():
   value = validate_value()
@@ -72,52 +43,52 @@ def add():
   # se usa is None en lugar de == None por practica de Python al momento de manejar la identidad de los objetos
   if value is None:
     return add()
-  match value:
-    case 1:
-      author = str(input("write the author of the book\n-> "))
-      category_name, title, genre, validation = input_values()
 
-      # datos a actualizar
-      data_update = {
-        category_name: [
-          {
-            "author": author,
-            "title": title,
-            "genre": genre,
-            "validation": validation
-          }
-        ]
+  # en caso de que el archivo no exista se crea con el initialize_json
+  if read_json(DB_file) is None:
+    initialize_json(DB_file, initial_structure={
+      "books": [],
+      "movies": [],
+      "music": []
+    })
+  match value:
+    
+    case 1:
+      category = "book"
+      category_name = "books"
+      author = input("write the author of the book\n-> ")
+      title, genre, validation = input_values(category)
+      # datos a actualizar 
+      entry = {
+          "author": author,
+          "title": title,
+          "genre": genre,
+          "validation": validation
       }
     case 2:
-      director = str(input("write the director of the movie\n-> "))
-      category_name, title, genre, validation = input_values()
-
-      data_update = {
-        category_name: [
-          {
-            "director": director,
-            "title": title,
-            "genre": genre,
-            "validation": validation
-          }
-        ]
+      category = "movie"
+      category_name = "movies"
+      director = input("write the director of the movie\n-> ")
+      title, genre, validation = input_values(category)
+      entry = {
+          "director": director,
+          "title": title,
+          "genre": genre,
+          "validation": validation
       }
 
     case 3:
-      artist = str(input("write the artist of the song\n-> "))
-      category_name, title, genre, validation = input_values()
-
-      data_update = {
-        category_name: [
-          {
-            "artist": artist,
-            "title": title,
-            "genre": genre,
-            "validation": validation
-          }
-        ]
+      category = "song"
+      category_name = "music"
+      artist = input("write the artist of the song\n-> ")
+      title, genre, validation = input_values(category)
+      entry = {
+          "artist": artist,
+          "title": title,
+          "genre": genre,
+          "validation": validation
       }
-
+    
     case 4:
       # como no retorna nada se sale de la funcion y vuelve al menu principal
       return 
@@ -127,29 +98,22 @@ def add():
       # vuelve a preguntar los datos del menu add
       return add()
 
-  if read_json(DB_file) is None:
-    # crear el json en caso de que su valor sea nulo, osea, que no exista
-    initialize_json(DB_file, initial_structure={
-    "books":[
-
-    ],
-    "movies":[
-
-    ],
-    "music":[
-        
-    ]
-  })
-  else:
-    try:
-      value = str(input(f"this is the data you wrote: {data_update}\nYour want to keep the changes? (y/n): ")).lower()
-    except ValueError:
-      print("Invalid input. Please enter a valid option.")
+  # validacion para poder agregar los datos
+  try:
+      confirm = str(input(f"\nthis is the data you wrote: {entry}\nDo you want to keep the changes? (y/n): ")).lower()
+      if confirm == "y":
+        data = read_json(DB_file)
+        # obtiene el endpoint de acuerdo al caso y le agrega los valores correspondientes establecidos en el entry
+        data[category_name].append(entry)
+        write_json(DB_file, data)
+        print("Data saved successfully!")
+      elif confirm == "n":
+        print("Changes discarded.")
+      else:
+        print("This is not a valid value, please enter again.")
+  except Exception as e:
+      print(f"error type: {e}, wrote de data corretly")
+  finally:
+      # para que al finalizar el programa vuelva al menu principal
       pause_screen()
-      return 
-    if value == "y":
-      update_json(DB_file, data_update)
-      print("Data saved successfully!")
-      return 
-    elif value == "n":
       return
