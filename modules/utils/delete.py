@@ -1,9 +1,10 @@
 from typing import Optional, Tuple
 from modules.menu import MENU_DELETE
 from modules.controllers.corefiles import *
+from modules.controllers.screenControllers import *
+import tabulate
 
-
-
+DB_FILE = "./data/db.json"
 # esta funcion sirve para validar las entradas del usuario al mostrar el menu con el fin de recortar el codigo y separarlo en funciones.
 def validate_value():
   clean_screen()
@@ -19,65 +20,68 @@ def validate_value():
   # devuelve el valor para que aparezca en la funcion delete
   return value
 
-def input_values(category: str) -> Tuple[str, str, Optional[float]]:
+def delete_input(section):
   try:
-    delete_value = input(f"write the title of the {category}\n-> ")
-    genre = input(f"write the genre of the {category}\n-> ")
-    validation_input = input(f"write the validation of the {category} (optional)\n-> ")
-    # esto es lo que se debe de hacer para el input de la validacion sea opcional, primero se pide el input, si el usuario da enter se devuelve None
-    validation = float(validation_input) if validation_input else None
-    if validation is not None and not (0 <= validation <= 5):
-      print("Validation must be between 0 and 5.")
-      pause_screen()
-      return input_values(category)
-
-    return title, genre, validation
+    delete_item = str(input(f"enter the {section} of the item you want to delete"))
   except ValueError:
-    print("Incorrect value, try again.")
+    print("This is not a valid value, please enter again.")
     pause_screen()
-    return input_values(category)
+    return delete()
+  else:
+    data = read_json(DB_FILE)
+    element_exist = False
+    # va a guardar (section_name, index) si se encuentra
+    found = None  
+    # para mostrar al usuario la informacion que se desea eliminar
+    data_found = None  
+
+    for section_name in data:
+      for index, element in enumerate(data[section_name]):
+        if element.get(section) == delete_item:
+          found = (section_name, index)
+          data_found = element
+          break
+      if found:
+        break
+        try:
+          confirm = str(input(f"\nthis is the data you wrote: {data_found}\nDo you want to delete that? (y/n): ")).lower()
+          if confirm == "y":
+            data = read_json(DB_FILE)
+            # obtiene el endpoint de acuerdo al caso y le agrega los valores correspondientes establecidos en el entry
+            data[section].delete_json(DB_FILE, element_exist)
+            print("Data deleted successfully!")
+          elif confirm == "n":
+            print("Changes discarded.")
+          else:
+            print("This is not a valid value, please enter again.")
+        except Exception as e:
+          print(f"error type: {e}, wrote de data corretly")
+        finally:
+          # para que al finalizar el programa vuelva al menu principal
+          pause_screen()
+          return
+      else:
+        print("you wrote an inexist element")
+        pause_screen()
+        return delete()
 
 # funcion principal de eliminar el dato de acuerdo a la entrada del usuario
 def delete():
   value = validate_value()
+  # en caso de que el valor se invalido (None), se vuelve a retonar la funcion para que el usuario vuelva a ingresar los datos.
+  # se usa is None en lugar de == None por practica de Python al momento de manejar la identidad de los objetos
+  if value is None:
+    return delete()
   match value:
     case 1:
-      category = "book"
-      category_name = "books"
-      author = input("write the author of the book\n-> ")
-      title, genre, validation = input_values(category)
-      # datos a actualizar 
-      entry = {
-          "author": author,
-          "title": title,
-          "genre": genre,
-          "validation": validation
-      }
+      section = "title"
+      delete_input(section)
     case 2:
-      pass
+      section = "id"
+      delete_input(section)
     case 3:
       return
     case _:
       print("This is not a valid value, please enter again.")
       pause_screen()
-      return
-    
-  # validacion para poder eliminar los datos
-  try:
-      confirm = str(input(f"\nthis is the data you wrote: {entry}\nDo you want to keep the changes? (y/n): ")).lower()
-      if confirm == "y":
-        data = read_json(DB_FILE)
-        # obtiene el endpoint de acuerdo al caso y le agrega los valores correspondientes establecidos en el entry
-        data[category_name].append(entry)
-        write_json(DB_FILE, data)
-        print("Data saved successfully!")
-      elif confirm == "n":
-        print("Changes discarded.")
-      else:
-        print("This is not a valid value, please enter again.")
-  except Exception as e:
-      print(f"error type: {e}, wrote de data corretly")
-  finally:
-      # para que al finalizar el programa vuelva al menu principal
-      pause_screen()
-      return
+      return delete()

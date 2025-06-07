@@ -53,8 +53,8 @@ def add():
       "movies": [],
       "music": []
     })
-  match value:
     
+  match value:
     case 1:
       category = "book"
       category_name = "books"
