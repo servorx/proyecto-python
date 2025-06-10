@@ -39,7 +39,7 @@ def delete_json(file_path: str, path: List[str]) -> bool:
             return False
         current = current[key]
     if path and path[-1] in current:
-        del current[path[-1]]
+        del current[path[-1]]   
         write_json(file_path, data)
         return True
     return False

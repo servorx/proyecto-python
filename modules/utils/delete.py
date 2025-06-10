@@ -1,4 +1,4 @@
-from typing import Optional, Tuple
+from typing import Optional, Tuple, List
 from modules.menu import MENU_DELETE
 from modules.controllers.corefiles import *
 from modules.controllers.screenControllers import *
@@ -22,18 +22,17 @@ def validate_value():
 
 def delete_input(section):
   try:
-    delete_item = str(input(f"enter the {section} of the item you want to delete"))
+    delete_item = str(input(f"enter the {section} of the item you want to delete\n-> "))
   except ValueError:
     print("This is not a valid value, please enter again.")
     pause_screen()
     return delete()
   else:
     data = read_json(DB_FILE)
-    element_exist = False
     # va a guardar (section_name, index) si se encuentra
-    found = None  
-    # para mostrar al usuario la informacion que se desea eliminar
-    data_found = None  
+    # found = None  
+    # # para mostrar al usuario la informacion que se desea eliminar
+    # data_found = None  
 
     for section_name in data:
       for index, element in enumerate(data[section_name]):
@@ -43,27 +42,30 @@ def delete_input(section):
           break
       if found:
         break
-        try:
-          confirm = str(input(f"\nthis is the data you wrote: {data_found}\nDo you want to delete that? (y/n): ")).lower()
-          if confirm == "y":
-            data = read_json(DB_FILE)
-            # obtiene el endpoint de acuerdo al caso y le agrega los valores correspondientes establecidos en el entry
-            data[section].delete_json(DB_FILE, element_exist)
-            print("Data deleted successfully!")
-          elif confirm == "n":
-            print("Changes discarded.")
+  
+    if found:
+      try:
+        confirm = str(input(f"\nthis is the data you wrote: {data_found}\nDo you want to delete that? (y/n): ")).lower()
+        if confirm == "y":
+          success = delete_json(DB_FILE, [found[0], found[1]])
+          if success:
+              print("Data deleted successfully!")
           else:
-            print("This is not a valid value, please enter again.")
-        except Exception as e:
-          print(f"error type: {e}, wrote de data corretly")
-        finally:
-          # para que al finalizar el programa vuelva al menu principal
-          pause_screen()
-          return
-      else:
-        print("you wrote an inexist element")
+              print("Something went wrong while trying to delete.")
+        elif confirm == "n":
+          print("Changes discarded.")
+        else:
+          print("This is not a valid value, please enter again.")
+      except Exception as e:
+        print(f"error type: {e}, wrote de data corretly")
+      finally:
+        # para que al finalizar el programa vuelva al menu principal
         pause_screen()
-        return delete()
+        return
+    else:
+      print("you wrote a non-existent item.")
+      pause_screen()
+      return delete()
 
 # funcion principal de eliminar el dato de acuerdo a la entrada del usuario
 def delete():
