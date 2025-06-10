@@ -1,5 +1,28 @@
 {
     "books": [],
-    "movies": [],
-    "music": []
+    "movies": [
+        {
+            "director": "no se",
+            "title": "musicaaaa ",
+            "genre": "metal ",
+            "validation": 2.0,
+            "id": 4172
+        },
+        {
+            "director": "no se ",
+            "title": "12",
+            "genre": "a",
+            "validation": null,
+            "id": 5041
+        }
+    ],
+    "music": [
+        {
+            "artist": "quevedo",
+            "title": "lo que vi en ti",
+            "genre": "reggaeton",
+            "validation": 4.0,
+            "id": 1938
+        }
+    ]
 }

@@ -3,6 +3,7 @@ from modules.controllers.id import *
 from modules.controllers.screenControllers import *
 from modules.menu import MENU_ADD
 from typing import Optional, Tuple
+import tabulate
 
 DB_FILE = "./data/db.json"
 
@@ -114,7 +115,11 @@ def add():
 
   # validacion para poder agregar los datos
   try:
-    confirm = str(input(f"\nthis is the data you wrote: {entry}\nDo you want to keep the changes? (y/n): ")).lower()
+    # elaboracion de confirm para que aparezca con tabla y tabulate
+    table = tabulate.tabulate([entry.values()], headers=entry.keys(), tablefmt="fancy_grid")
+    print("\nThis is the data you wrote:")
+    print(table)
+    confirm = input("Do you want to keep the changes? (y/n): ").lower()
     if confirm == "y":
       data = read_json(DB_FILE)
       # obtiene el endpoint de acuerdo al caso y le agrega los valores correspondientes establecidos en el entry

@@ -49,11 +49,13 @@ def delete_input(section):
       # todo: hacer que esto imprima con tabulate
       confirm = input(f"\nThis is the data you wrote: {data_found}\nDo you want to delete that? (y/n): ").lower()
       if confirm == "y":
-        success = delete_json(DB_FILE, [found[0], found[1]])
-        if success:
+        try:
+          # Eliminar el elemento directamente y guardar
+          del data[found[0]][found[1]]
+          write_json(DB_FILE, data)
           print("Data deleted successfully!")
-        else:
-          print("Something went wrong while trying to delete.")
+        except Exception as e:
+          print(f"Error while deleting the item: {e}")
       elif confirm == "n":
         print("Changes discarded.")
       else:
