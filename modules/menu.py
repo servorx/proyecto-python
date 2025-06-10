@@ -30,7 +30,7 @@ MENU_DELETE = """
 ===========================================
 How would you like to delete?
 1. Delete by Title
-2. Delete by Unique Identifier
+2. Delete by Unique Identifier (ID)
 3. Return to Main Menu
 ===========================================
 Select an option (1-3):"""

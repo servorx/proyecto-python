@@ -1,11 +1,11 @@
-import tabulate
-
 # Categoría (libro, película o música)
 # Género
 from modules.menu import MENU_SEE_CATEGORY
 from modules.controllers.corefiles import *
+from modules.controllers.screenControllers import *
+import tabulate
 
-def see_category():
+def validate_value():
   clean_screen()
   print(MENU_SEE_CATEGORY)
   try:
@@ -13,7 +13,15 @@ def see_category():
   except ValueError:
     print("Invalid input. Please enter a number between 1 and 4.")
     pause_screen()
-    return
+    return None
+  return value
+
+
+def see_category():
+  value = validate_value()
+  # determinar si el usuario no escribe nada, vuelve a retornar el programa
+  if value is None:
+    return see_category()
   match value:
     case 1:
       pass

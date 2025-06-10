@@ -1,11 +1,18 @@
 {
     "books": [
         {
-            "author": "sc",
-            "title": "awe",
-            "genre": "12",
-            "validation": 3.0,
-            "id": 6169
+            "author": "sexooo",
+            "title": "nocno",
+            "genre": "a",
+            "validation": 1.0,
+            "id": 3055
+        },
+        {
+            "author": "i",
+            "title": "asdf",
+            "genre": "qwe",
+            "validation": 1.0,
+            "id": 3068
         }
     ],
     "movies": [],

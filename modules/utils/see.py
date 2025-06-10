@@ -1,7 +1,9 @@
 import tabulate
 from modules.menu import MENU_SEE
 from modules.controllers.corefiles import *
-def see():
+from modules.controllers.screenControllers import *
+
+def validate_value():
   clean_screen()
   print(MENU_SEE)
   try:
@@ -9,7 +11,15 @@ def see():
   except ValueError:
     print("Invalid input. Please enter a number between 1 and 4.")
     pause_screen()
-    return
+    return None
+  return value
+
+
+def see():
+  value = validate_value()
+  # determinar si el usuario no escribe nada, vuelve a retornar el programa
+  if value is None:
+    return see()
   match value:
     case 1:
       pass
