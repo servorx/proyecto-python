@@ -2,7 +2,7 @@ from typing import List
 from modules.menu import MENU_DELETE
 from modules.controllers.corefiles import *
 from modules.controllers.screenControllers import *
-import tabulate
+from tabulate import tabulate
 
 DB_FILE = "./data/db.json"
 
@@ -47,7 +47,10 @@ def delete_input(section):
   if found:
     try:
       # todo: hacer que esto imprima con tabulate
-      confirm = input(f"\nThis is the data you wrote: {data_found}\nDo you want to delete that? (y/n): ").lower()
+      table = tabulate(data_found.items(), headers=["Field", "Value"], tablefmt="fancy_grid")
+      print("\nThis is the data you want to delete: ")
+      print(table)
+      confirm = input("Do you want to delete that? (y/n): ").lower()
       if confirm == "y":
         try:
           # Eliminar el elemento directamente y guardar
