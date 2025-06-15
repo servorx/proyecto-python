@@ -39,14 +39,25 @@ MENU_EDIT = """
 ===========================================
             Edit an Item
 ===========================================
-What type of change would you like to make?
+What type of change would you like to edit?
 1. Edit Title
 2. Edit Author/Director/Artist
 3. Edit Genre
-4. Edit Rating
+4. Edit valoration
 5. Return to Main Menu
 ===========================================
 Select an option (1-5):"""
+
+MENU_EDIT_SELECT = """
+===========================================
+            Choose an Item
+===========================================
+What item would you like to edit?
+1. Write title
+2. Write by ID
+===========================================
+Select an option (1-2):"""
+
 
 MENU_SEARCH = """
 ===========================================

@@ -24,15 +24,15 @@ def input_values(category: str) -> Tuple[str, str, Optional[float]]:
   try:
     title = input(f"write the title of the {category}\n-> ")
     genre = input(f"write the genre of the {category}\n-> ")
-    validation_input = input(f"write the validation of the {category} (optional)\n-> ")
+    valoration_input = input(f"write the valoration of the {category} (optional)\n-> ")
     # esto es lo que se debe de hacer para el input de la validacion sea opcional, primero se pide el input, si el usuario da enter se devuelve None
-    validation = float(validation_input) if validation_input else None
-    if validation is not None and not (0 <= validation <= 5):
-      print("Validation must be between 0 and 5.")
+    valoration = float(valoration_input) if valoration_input else None
+    if valoration is not None and not (0 <= valoration <= 5):
+      print("valoration must be between 0 and 5.")
       pause_screen()
       return input_values(category)
 
-    return title, genre, validation
+    return title, genre, valoration
   except ValueError:
     print("Incorrect value, try again.")
     pause_screen()
@@ -60,7 +60,7 @@ def add():
       category = "book"
       category_name = "books"
       author = input("write the author of the book\n-> ")
-      title, genre, validation = input_values(category)
+      title, genre, valoration = input_values(category)
       # funcion para crear y verficiar el ID
       id = ID()
 
@@ -69,14 +69,14 @@ def add():
         "author": author,
         "title": title,
         "genre": genre,
-        "validation": validation,
+        "valoration": valoration,
         "id": id
       }
     case 2:
       category = "movie"
       category_name = "movies"
       director = input("write the director of the movie\n-> ")
-      title, genre, validation = input_values(category)
+      title, genre, valoration = input_values(category)
       # funcion para crear y verficiar el ID
       id = ID()
 
@@ -84,7 +84,7 @@ def add():
         "director": director,
         "title": title,
         "genre": genre,
-        "validation": validation,
+        "valoration": valoration,
         "id": id
       }
 
@@ -92,7 +92,7 @@ def add():
       category = "song"
       category_name = "music"
       artist = input("write the artist of the song\n-> ")
-      title, genre, validation = input_values(category)
+      title, genre, valoration = input_values(category)
       # funcion para crear y verficiar el ID
       id = ID()
 
@@ -100,7 +100,7 @@ def add():
         "artist": artist,
         "title": title,
         "genre": genre,
-        "validation": validation,
+        "valoration": valoration,
         "id": id
       }
     
