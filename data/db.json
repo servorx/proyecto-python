@@ -1,11 +1,19 @@
 {
-    "books": [],
+    "books": [
+        {
+            "author": "no se",
+            "title": "no se",
+            "genre": "novela ",
+            "valoration": 5.0,
+            "id": 9175
+        }
+    ],
     "movies": [
         {
-            "director": "no se",
+            "director": "lorna shore ",
             "title": "musicaaaa ",
-            "genre": "metal ",
-            "valoration": 4.3,
+            "genre": "metal",
+            "valoration": 1.0,
             "id": 4172
         }
     ],
