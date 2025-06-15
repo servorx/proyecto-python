@@ -58,7 +58,6 @@ What item would you like to edit?
 ===========================================
 Select an option (1-2):"""
 
-
 MENU_SEARCH = """
 ===========================================
             Search for an Item
@@ -83,17 +82,5 @@ Which category would you like to view?
 ===========================================
 Select an option (1-4):"""
 
-
-MENU_SEE = """
-===========================================
-            View All Items
-===========================================
-Which category would you like to view?
-1. View All Books
-2. View All Movies
-3. View All Music
-4. Return to Main Menu
-===========================================
-Select an option (1-4):"""
 
 

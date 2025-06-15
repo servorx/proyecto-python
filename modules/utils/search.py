@@ -1,6 +1,10 @@
 from modules.menu import MENU_SEARCH
 from modules.controllers.corefiles import *
 from modules.controllers.screenControllers import *
+import tabulate 
+
+DB_FILE = "./data/db.json"
+
 # Esta función sirve para validar las entradas del usuario al mostrar el menú
 def validate_value():
   clean_screen()

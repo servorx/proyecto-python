@@ -1,35 +1,23 @@
 import tabulate
-from modules.menu import MENU_SEE
 from modules.controllers.corefiles import *
 from modules.controllers.screenControllers import *
 
-def validate_value():
-  clean_screen()
-  print(MENU_SEE)
-  try:
-    value = int(input("-> "))
-  except ValueError:
-    print("Invalid input. Please enter a number between 1 and 4.")
-    pause_screen()
-    return None
-  return value
-
+DB_FILE = "./data/db.json"
 
 def see():
-  value = validate_value()
-  # determinar si el usuario no escribe nada, vuelve a retornar el programa
-  if value is None:
-    return see()
-  match value:
-    case 1:
-      pass
-    case 2:
-      pass
-    case 3:
-      pass
-    case 4:
-      return
-    case _:
-      print("This is not a valid value, please enter again.")
-      pause_screen()
-      return
+  # recorre toda la informacion en el json 
+  data = read_json(DB_FILE)
+  clean_screen()
+  print("This is all the data in your database:\n")
+
+  # bucle para recoger los datos del json e imprimir una vez por cada categoria (books, movies y music)
+  for section_name, items in data.items():
+    if not items:
+      print(f"No data found in section: {section_name}\n")
+      continue
+
+    print(f"Section: {section_name.upper()}")
+    print(tabulate.tabulate(items, headers="keys", tablefmt="fancy_grid"))
+    print("\n")
+
+  pause_screen()
